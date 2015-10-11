@@ -163,7 +163,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom.std:root/fstab.qcom.std \
-    $(LOCAL_PATH)/rootdir/fstab.qcom.lvm:fstab.qcom.lvm \
+    $(LOCAL_PATH)/rootdir/fstab.qcom.lvm:root/fstab.qcom.lvm \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/rootdir/init.fs.rc.std:root/init.fs.rc.std \
     $(LOCAL_PATH)/rootdir/init.fs.rc.lvm:root/init.fs.rc.lvm \
