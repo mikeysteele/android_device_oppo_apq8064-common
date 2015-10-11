@@ -160,19 +160,17 @@ PRODUCT_PACKAGES += \
 
 
 
-# Ramdisk
-PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
 
-PRODUCT_PACKAGES += \
-    fstab.qcom.std \
-    fstab.qcom.lvm \
-    init.qcom.rc \
-    init.fs.rc.std \
-    init.fs.rc.lvm \
-    init.qcom.usb.rc \
-    init.recovery.qcom.rc \
-    ueventd.qcom.rc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/fstab.qcom.std:root/fstab.qcom.std \
+    $(LOCAL_PATH)/rootdir/fstab.qcom.lvm:fstab.qcom.lvm \
+    $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/init.fs.rc.std:root/init.fs.rc.std \
+    $(LOCAL_PATH)/rootdir/init.fs.rc.lvm:root/init.fs.rc.lvm \
+    $(LOCAL_PATH)/rootdir/init.oppo.usb.rc:root/init.oppo.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # LVM
 PRODUCT_COPY_FILES += \
@@ -215,5 +213,3 @@ PRODUCT_PACKAGES += \
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/oppo/apq8064-common/apq8064-common-vendor.mk)
 
-# Inherit from oppo-common
-#$(call inherit-product, device/oppo/common/common.mk)
