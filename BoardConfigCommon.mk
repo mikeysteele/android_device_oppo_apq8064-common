@@ -41,7 +41,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom lpj=67677 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 zcache androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 TARGET_KERNEL_SOURCE := kernel/oppo/apq8064
-BOARD_CUSTOM_BOOTIMG_MK := device/oppo/apq8064-common/mkbootimg.mk
+#BOARD_CUSTOM_BOOTIMG_MK := device/oppo/apq8064-common/mkbootimg.mk
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
@@ -59,7 +59,7 @@ BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_FOR_VOIP := true
 BOARD_USES_FLUENCE_INCALL := true
-BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_USES_LEGACY_ALSA_AUDIO :=
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_USES_SEPERATED_HEADSET_MIC := true
 BOARD_USES_SEPERATED_VOICE_SPEAKER := true
@@ -87,9 +87,6 @@ USE_OPENGL_RENDERER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Logging
-TARGET_USES_LOGD := false
-
 # Partitions
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -113,7 +110,7 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom.std
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 
 # SELinux

@@ -41,6 +41,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
@@ -64,12 +65,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
 
+# Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
+    alsa.msm8960 \
     audio.primary.msm8960 \
-    audio.r_submix.default \
+    audio.a2dp.default \
     audio.usb.default \
-    audio_policy.msm8960 \
+    audio.r_submix.default \
     libaudio-resampler \
     tinymix
 
@@ -156,28 +158,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qrngd
 
-# Ramdisk
-PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
 
-PRODUCT_PACKAGES += \
-    fstab.qcom.std \
-    fstab.qcom.lvm \
-    init.qcom.rc \
-    init.fs.rc.std \
-    init.fs.rc.lvm \
-    init.qcom.usb.rc \
-    init.recovery.qcom.rc \
-    ueventd.qcom.rc
 
-# LVM
+
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/lvm/lvm_init.sh:root/lvm_init.sh \
-    $(LOCAL_PATH)/lvm/lvm_init_recovery.sh:recovery/root/sbin/lvm_init_recovery.sh \
-    $(LOCAL_PATH)/lvm/lvm_symlinks.sh:root/lvm_symlinks.sh \
-    $(LOCAL_PATH)/lvm/lvm_setprop.sh:root/lvm_setprop.sh \
-    $(LOCAL_PATH)/lvm/lvm:root/sbin/lvm \
-    $(LOCAL_PATH)/lvm/lvm.conf:root/lvm/etc/lvm.conf
+    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/init.oppo.usb.rc:root/init.oppo.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/rootdir/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # Thermal
 PRODUCT_COPY_FILES += \
@@ -193,9 +183,6 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
@@ -205,9 +192,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-PRODUCT_PACKAGES += \
-    libwcnss_qmi \
-    wcnss_service
 
 PRODUCT_PACKAGES += \
     crda \
@@ -217,5 +201,3 @@ PRODUCT_PACKAGES += \
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/oppo/apq8064-common/apq8064-common-vendor.mk)
 
-# Inherit from oppo-common
-#$(call inherit-product, device/oppo/common/common.mk)
